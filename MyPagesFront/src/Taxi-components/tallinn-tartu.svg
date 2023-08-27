@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 800 750" width="800" height="750">
+  <!-- Estonia Map -->
+  <image xlink:href="Eesti_maakonnad_2006.svg" width="800" height="750" />
+
+  <!-- Route from Tallinn to Tartu -->
+  <!-- <path d="M200,500 Q500,200 700,500" fill="none" stroke="red" stroke-width="4" /> -->
+  <path d="M370,120 Q500,200 615,350" fill="none" stroke="red" stroke-width="4" />
+
+  <!-- Start and End Points -->
+  <circle cx="370" cy="120" r="6" fill="red" />
+  <circle cx="615" cy="350" r="6" fill="red" />
+
+  <!-- Text Labels for Start and End Points -->
+  <text x="370" y="120" font-size="12" fill="black">Tallinn</text>
+  <!-- <text x="600" y="350" font-size="12" fill="black">Tartu</text> -->
+</svg>

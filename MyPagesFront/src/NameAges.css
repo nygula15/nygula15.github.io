@@ -1,0 +1,29 @@
+/* PostgresTablePage.css */
+
+/* Table styles */
+.table-container {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+  }
+  
+  .table-container th,
+  .table-container td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .table-container th {
+    background-color: #f2f2f2;
+  }
+  
+  .table-container td:last-child {
+    border-right: none; /* Remove the right border for the last cell in each row */
+  }
+  
+  .action-cell {
+    border: none;
+    padding: 8px;
+  }
+  
