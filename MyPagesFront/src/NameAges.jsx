@@ -11,11 +11,17 @@ const NameAges = () => {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
 
+
+  // Create an instance of Axios with the base URL
+  const axiosInstance = axios.create({
+    baseURL: 'https://express-back-fzk9.onrender.com',
+  });
+
   // Function to fetch data from the server
   const fetchData = async () => {
     try {
       // Fetch data from the API endpoint
-      const response = await axios.get('/api/name_ages');
+      const response = await axiosInstance.get('/api/name_ages');
       console.log('Response:', response.data);
 
       // Extract table column names from the response
@@ -37,7 +43,7 @@ const NameAges = () => {
   const handleDelete = async (id) => {
     try {
       // Send a DELETE request to the API to delete a record
-      await axios.delete(`/api/name_ages/${id}`);
+      await axiosInstancedelete(`/api/name_ages/${id}`);
       console.log('Data deleted:', id);
 
       // After successful deletion, fetch the data again to refresh the table
@@ -52,7 +58,7 @@ const NameAges = () => {
     e.preventDefault();
     try {
       // Send a POST request to the API to add a new record
-      const response = await axios.post('/api/name_ages', {
+      const response = await axiosInstancepost('/api/name_ages', {
         name: name,
         age: age,
       });
