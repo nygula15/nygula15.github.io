@@ -18,6 +18,10 @@ const pool = new Pool({
 // Use CORS middleware to enable CORS for all routes
 app.use(cors());
 
+app.get('/', (req, res) => {
+  res.send('Welcome to My API Service!');
+});
+
 // Define your API routes
 app.get('/api/name_ages', async (req, res) => {
   try {
