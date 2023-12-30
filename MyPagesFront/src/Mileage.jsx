@@ -6,10 +6,16 @@ const Mileage = () => {
   const [tableData, setTableData] = useState([]);
   const [tableColumns, setTableColumns] = useState([]);
 
+
+  // Create an instance of Axios with the base URL
+  const axiosInstance = axios.create({
+    baseURL: 'https://express-back-fzk9.onrender.com',
+  });
+
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('https://express-back-fzk9.onrender.com/api/mileage');
+        const response = await axiosInstance.get('https://express-back-fzk9.onrender.com/api/mileage');
         console.log('Response:', response.data); // Check if the data is being fetched correctly
         setTableColumns(Object.keys(response.data[0])); // Use response.data[0] to get the first row's columns
         setTableData(response.data);
