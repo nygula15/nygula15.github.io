@@ -43,7 +43,7 @@ const NameAges = () => {
   const handleDelete = async (id) => {
     try {
       // Send a DELETE request to the API to delete a record
-      await axiosInstancedelete(`/api/name_ages/${id}`);
+      await axiosInstance.delete(`/api/name_ages/${id}`);
       console.log('Data deleted:', id);
 
       // After successful deletion, fetch the data again to refresh the table
@@ -58,7 +58,7 @@ const NameAges = () => {
     e.preventDefault();
     try {
       // Send a POST request to the API to add a new record
-      const response = await axiosInstancepost('/api/name_ages', {
+      const response = await axiosInstance.post('/api/name_ages', {
         name: name,
         age: age,
       });
