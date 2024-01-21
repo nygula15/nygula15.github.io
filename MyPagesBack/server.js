@@ -8,14 +8,6 @@ const app = express();
 const port = 5000; // choose your desired port number
 app.use(express.json());// Parse JSON request bodies
 
-// const pool = new Pool({
-//   user: 'latifn',
-//   host: 'dpg-cm45g5en7f5s73btd6cg-a',
-//   database: 'commondb_u1wp',
-//   password: 'Yf8JhctKMHJT2ciIHzKLMpxS5UIeG2mJ',
-//   port: 5432 // or your specified port number
-// });
-
 // Use CORS middleware to enable CORS for all routes
 app.use(cors());
 
