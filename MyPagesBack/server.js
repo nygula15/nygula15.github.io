@@ -1,6 +1,7 @@
 const express = require('express');
 //const { Pool } = require('pg');
 const pool = require('./dbConfig'); // Import the database configuration
+const axios = require('axios');
 const cors = require('cors'); // Import the cors middleware
 
 
@@ -54,19 +55,6 @@ app.delete('/api/name_ages/:id', async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 });
-// app.post('/api/mileage', async (req, res) => {
-//   const { date, time, paymentMethod, mileage, activityType, fuelType, fuelAmount, fuelPrice, fuelPriceDiscount, comments } = req.body;
-//   try {
-//     const result = await pool.query(
-//       'INSERT INTO mileage_records (date, time, mileage, activity_type, fuel_type, fuel_price, fuel_price_discount) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id',
-//       [date, time, paymentMethod, mileage, activityType, fuelType, fuelAmount, fuelPrice, fuelPriceDiscount, comments]
-//     );
-//     res.json({ id: result.rows[0].id });
-//   } catch (error) {
-//     console.error('Error inserting mileage:', error);
-//     res.status(500).json({ error: 'Internal server error' });
-//   }
-// });
 
 app.get('/api/mileage', async (req, res) => {
   try {
@@ -78,6 +66,20 @@ app.get('/api/mileage', async (req, res) => {
   }
 });
 
+app.get('/api/prayer-times', async (req, res) => {
+  const { year, month, city, country, method } = req.query;
+  const apiUrl = `http://api.aladhan.com/v1/calendarByCity/${year}/${month}?city=${city}&country=${country}&method=${method}`;
+
+  try {
+      const response = await axios.get(apiUrl);
+      const prayerTimesData = response.data;
+      // Process the data as needed and send it back to the client
+      res.json(prayerTimesData);
+  } catch (error) {
+      console.error('Error:', error.message);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 // Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
